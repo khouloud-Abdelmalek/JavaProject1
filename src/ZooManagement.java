@@ -1,5 +1,4 @@
 
-
 public class ZooManagement {
     public static void main(String[] args) {
         // Déclaration des variables
@@ -10,6 +9,3 @@ public class ZooManagement {
         System.out.println(zooName + " comporte " + nbrCages + " cages");
     }
 }
-
-
-
