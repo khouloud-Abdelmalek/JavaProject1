@@ -1,20 +1,25 @@
 package tn.esprit.gestionzoo.entities;
 
-public class Animal {
-    private String family;   // Famille de l'animal
-    private String name;     // Nom de l'animal
-    private int age;         // Âge de l'animal
-    private boolean isMammal; // Si l'animal est un mammifère
+import tn.esprit.gestionzoo.exceptions.InvalidAgeException;
 
-    // Constructeur paramétré
+public sealed class Animal permits Aquatic, Terrestrial {
+
+    private String family, name;
+    private int age;
+    private boolean isMammal;
+
+
+    public Animal() {
+    }
+
     public Animal(String family, String name, int age, boolean isMammal) {
         this.family = family;
         this.name = name;
-        setAge(age);  // Utilisation du setter pour valider l'âge
+        this.age = age;
         this.isMammal = isMammal;
     }
 
-    // Getters et setters avec validation et encapsulation
+
     public String getFamily() {
         return family;
     }
@@ -35,26 +40,24 @@ public class Animal {
         return age;
     }
 
-    // Validation de l'âge (ne peut pas être négatif)
-    public void setAge(int age) {
-        if (age >= 0) {
+    public void setAge(int age) throws InvalidAgeException {
+        if (age < 0)
+            throw new InvalidAgeException("The age must a positive number");
+        else
             this.age = age;
-        } else {
-            System.out.println("L'âge de l'animal ne peut pas être négatif.");
-        }
     }
 
     public boolean isMammal() {
         return isMammal;
     }
 
-    public void setMammal(boolean isMammal) {
-        this.isMammal = isMammal;
+    public void setMammal(boolean mammal) {
+        isMammal = mammal;
     }
 
-    // Méthode toString pour afficher les informations de l'animal
+
     @Override
     public String toString() {
-        return "Animal [Nom: " + name + ", Famille: " + family + ", Âge: " + age + ", Mammifère: " + isMammal + "]";
+        return "Animal{ Family:" + family + ", Name: " + name + ", Age: " + age + ", isMammal: " + isMammal + "}";
     }
 }
