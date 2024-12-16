@@ -1,4 +1,4 @@
-package tn.esprit.gestionzoo;
+package tn.esprit.gestionzoo.entities;
 
 public class Zoo {
     private Animal[] animals; // Tableau d'animaux

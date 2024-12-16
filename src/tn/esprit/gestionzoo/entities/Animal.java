@@ -1,4 +1,4 @@
-package tn.esprit.gestionzoo;
+package tn.esprit.gestionzoo.entities;
 
 public class Animal {
     private String family;   // Famille de l'animal
