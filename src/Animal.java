@@ -1,11 +1,10 @@
-// Classe Animal
 public class Animal {
     String family;
     String name;
     int age;
     boolean isMammal;
 
-    // Constructeur paramétré pour initialiser l'animal
+    // Constructeur paramétré
     public Animal(String family, String name, int age, boolean isMammal) {
         this.family = family;
         this.name = name;
@@ -13,9 +12,10 @@ public class Animal {
         this.isMammal = isMammal;
     }
 
-    // Méthode toString pour afficher les informations de l'animal
+    // Redéfinition de la méthode toString pour un affichage personnalisé
     @Override
     public String toString() {
-        return "Nom: " + name + ", Famille: " + family + ", Âge: " + age + ", Mammifère: " + (isMammal ? "Oui" : "Non");
+        return "Animal [Name: " + name + ", Family: " + family + ", Age: " + age + ", Mammal: " + isMammal + "]";
     }
 }
+
