@@ -2,6 +2,8 @@ package tn.esprit.gestionzoo.main;
 
 import tn.esprit.gestionzoo.entities.Zoo;
 import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Dolphin;
+import tn.esprit.gestionzoo.entities.Penguin;
 
 import java.util.Scanner;
 
@@ -9,16 +11,8 @@ public class ZooManagement {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Demander à l'utilisateur le nom du zoo et le nombre de cages
-        System.out.println("Entrez le nom du zoo:");
-        String zooName = scanner.nextLine();
-
-        System.out.println("Entrez le nombre de cages:");
-        int nbrCages = scanner.nextInt();
-        scanner.nextLine(); // Consommer la nouvelle ligne après l'entier
-
-        // Création d'un objet Zoo
-        Zoo myZoo = new Zoo(zooName, "Paris");
+        // Création d'un zoo
+        Zoo myZoo = new Zoo("Paris Zoo", "Paris");
 
         // Création d'animaux
         Animal lion = new Animal("Felidae", "Lion", 5, true);
@@ -30,26 +24,22 @@ public class ZooManagement {
         myZoo.addAnimal(tiger);
         myZoo.addAnimal(elephant);
 
-        // Afficher les animaux
-        myZoo.displayAnimals();
+        // Création d'animaux aquatiques
+        Dolphin dolphin = new Dolphin("Flipper", 3, "Océan Atlantique");
+        Penguin penguin = new Penguin("Pingu", 2, "Antarctique");
 
-        // Rechercher un animal dans le zoo
-        int index = myZoo.searchAnimal(lion);
-        System.out.println("Lion trouvé à l'indice: " + index);
+        // Ajouter des animaux aquatiques
+        myZoo.addAquaticAnimal(dolphin);
+        myZoo.addAquaticAnimal(penguin);
 
-        // Supprimer un animal
-        myZoo.removeAnimal(tiger);
-        myZoo.displayAnimals();
+        // Afficher les animaux aquatiques et leurs comportements
+        myZoo.displayAquaticAnimalsSwim();
 
-        // Comparer deux zoos
-        Zoo anotherZoo = new Zoo("Another Zoo", "London");
-        anotherZoo.addAnimal(new Animal("Felidae", "Jaguar", 6, true));
-        Zoo largerZoo = Zoo.comparerZoo(myZoo, anotherZoo);
-        if (largerZoo != null) {
-            System.out.println("Le zoo avec le plus d'animaux est: " + largerZoo.getName());
-        } else {
-            System.out.println("Les deux zoos ont le même nombre d'animaux.");
-        }
+        // Afficher le nombre de dauphins et de pingouins
+        myZoo.displayNumberOfAquaticsByType();
+
+        // Afficher la profondeur maximale de nage des pingouins
+        System.out.println("Profondeur maximale de nage des pingouins : " + myZoo.maxPenguinSwimmingDepth() + " mètres");
 
         scanner.close();
     }
