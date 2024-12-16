@@ -1,10 +1,10 @@
-package tn.esprit.gestionzoo.entities;
+package tn.esprit.gestionzoo;
 
 public class Animal {
-    private String family;
-    private String name;
-    private int age;
-    private boolean isMammal;
+    private String family;   // Famille de l'animal
+    private String name;     // Nom de l'animal
+    private int age;         // Âge de l'animal
+    private boolean isMammal; // Si l'animal est un mammifère
 
     // Constructeur paramétré
     public Animal(String family, String name, int age, boolean isMammal) {
@@ -14,7 +14,7 @@ public class Animal {
         this.isMammal = isMammal;
     }
 
-    // Getters et setters avec encapsulation et validation
+    // Getters et setters avec validation et encapsulation
     public String getFamily() {
         return family;
     }
@@ -35,7 +35,7 @@ public class Animal {
         return age;
     }
 
-    // Validation de l'âge
+    // Validation de l'âge (ne peut pas être négatif)
     public void setAge(int age) {
         if (age >= 0) {
             this.age = age;
@@ -55,6 +55,6 @@ public class Animal {
     // Méthode toString pour afficher les informations de l'animal
     @Override
     public String toString() {
-        return "Animal [Name: " + name + ", Family: " + family + ", Age: " + age + ", Mammal: " + isMammal + "]";
+        return "Animal [Nom: " + name + ", Famille: " + family + ", Âge: " + age + ", Mammifère: " + isMammal + "]";
     }
 }

@@ -1,4 +1,4 @@
-package tn.esprit.gestionzoo.entities;
+package tn.esprit.gestionzoo;
 
 public class Zoo {
     private Animal[] animals; // Tableau d'animaux
@@ -19,7 +19,7 @@ public class Zoo {
         return name;
     }
 
-    // Validation du nom du zoo
+    // Validation du nom du zoo (ne peut pas être vide)
     public void setName(String name) {
         if (name != null && !name.trim().isEmpty()) {
             this.name = name;
