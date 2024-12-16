@@ -1,38 +1,19 @@
-import java.util.Scanner;
-
 public class ZooManagement {
     public static void main(String[] args) {
-        // Déclaration des variables
-        int nbrCages = 20;
-        String zooName = "my zoo";
+        // Création de l'animal (lion)
+        Animal lion = new Animal("Felidae", "Lion", 5, true);
 
-        // Création d'un objet Scanner pour lire les entrées utilisateur
-        Scanner scanner = new Scanner(System.in);
+        // Création du zoo (myZoo) avec un maximum de 25 cages
+        Zoo myZoo = new Zoo("My Zoo", "Paris", 25);
 
-        // Demande du nom du zoo
-        System.out.print("Veuillez entrer le nom du zoo : ");
-        zooName = scanner.nextLine();
+        // Affichage des informations de l'animal
+        System.out.println(lion);
 
-        // Demande du nombre de cages avec validation
-        boolean validInput = false;
-        while (!validInput) {
-            try {
-                System.out.print("Veuillez entrer le nombre de cages : ");
-                nbrCages = Integer.parseInt(scanner.nextLine());
-                if (nbrCages > 0) {
-                    validInput = true; // Sortir de la boucle si l'entrée est valide
-                } else {
-                    System.out.println("Le nombre de cages doit être un entier positif.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Entrée invalide. Veuillez entrer un entier.");
-            }
-        }
+        // Affichage des informations du zoo
+        myZoo.displayZoo();
 
-        // Affichage des données saisies
-        System.out.println(zooName + " comporte " + nbrCages + " cages");
-
-        // Fermeture du scanner
-        scanner.close();
+        // Test des deux instructions
+        System.out.println(myZoo);           // Affiche via la méthode toString
+        System.out.println(myZoo.toString()) ; // Affiche via la méthode toString
     }
 }
