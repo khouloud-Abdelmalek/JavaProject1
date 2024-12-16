@@ -1,19 +1,18 @@
 public class ZooManagement {
     public static void main(String[] args) {
-        // Création de l'animal (lion)
+        Zoo myZoo = new Zoo("My Zoo", "Paris");
+
+        // Création d'animaux
         Animal lion = new Animal("Felidae", "Lion", 5, true);
+        Animal tiger = new Animal("Felidae", "Tiger", 4, true);
 
-        // Création du zoo (myZoo) avec un maximum de 25 cages
-        Zoo myZoo = new Zoo("My Zoo", "Paris", 25);
+        // Tentative d'ajout des animaux
+        System.out.println(myZoo.addAnimal(lion)); // true
+        System.out.println(myZoo.addAnimal(tiger)); // true
 
-        // Affichage des informations de l'animal
-        System.out.println(lion);
-
-        // Affichage des informations du zoo
-        myZoo.displayZoo();
-
-        // Test des deux instructions
-        System.out.println(myZoo);           // Affiche via la méthode toString
-        System.out.println(myZoo.toString()) ; // Affiche via la méthode toString
+        // Essayez d'ajouter plus d'animaux que la capacité
+        for (int i = 0; i < 30; i++) {
+            System.out.println(myZoo.addAnimal(new Animal("Felidae", "Animal" + i, 3, true)));
+        }
     }
 }
