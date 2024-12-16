@@ -1,35 +1,19 @@
-package list;
+public class Employe implements Comparable<Employe> {
+    private int identifiant;
+    private String nom;
 
-public class Employe implements Comparable<Employe>{
 
-    private int id, grade;
-    private String nom, prenom, departement;
-
-    public Employe(int id, int grade, String nom, String prenom, String departement) {
-        this.id = id;
-        this.grade = grade;
+    public Employe(int identifiant, String nom) {
+        this.identifiant = identifiant;
         this.nom = nom;
-        this.prenom = prenom;
-        this.departement = departement;
     }
 
-    public Employe() {
+    public int getIdentifiant() {
+        return identifiant;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getGrade() {
-        return grade;
-    }
-
-    public void setGrade(int grade) {
-        this.grade = grade;
+    public void setIdentifiant(int identifiant) {
+        this.identifiant = identifiant;
     }
 
     public String getNom() {
@@ -40,44 +24,29 @@ public class Employe implements Comparable<Employe>{
         this.nom = nom;
     }
 
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getDepartement() {
-        return departement;
-    }
-
-    public void setDepartement(String departement) {
-        this.departement = departement;
+    @Override
+    public int compareTo(Employe autre) {
+        return Integer.compare(this.identifiant, autre.identifiant);
     }
 
     @Override
     public String toString() {
-        return "list.Employe{" +
-                "id=" + id +
-                ", grade=" + grade +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", departement='" + departement + '\'' +
-                '}';
+        return "Employé[id=" + identifiant + ", nom=" + nom + "]";
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null) return false;
-        if (o == this) return true;
-        if (o instanceof Employe e)
-            return e.id == id && e.nom.equals(nom);
-        return false;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Employe employe = (Employe) obj;
+        return identifiant == employe.identifiant && nom.equals(employe.nom);
     }
 
     @Override
-    public int compareTo(Employe o) {
-        return id - o.id;
+    public int hashCode() {
+        int result = Integer.hashCode(identifiant);
+        result = 31 * result + nom.hashCode();
+        return result;
     }
 }
+
