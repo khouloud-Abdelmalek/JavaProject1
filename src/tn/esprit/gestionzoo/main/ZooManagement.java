@@ -1,46 +1,46 @@
 package tn.esprit.gestionzoo.main;
 
-import tn.esprit.gestionzoo.entities.Zoo;
-import tn.esprit.gestionzoo.entities.Animal;
-import tn.esprit.gestionzoo.entities.Dolphin;
-import tn.esprit.gestionzoo.entities.Penguin;
-
-import java.util.Scanner;
+import tn.esprit.gestionzoo.entities.*;
+import tn.esprit.gestionzoo.exceptions.InvalidAgeException;
+import tn.esprit.gestionzoo.exceptions.ZooFullException;
 
 public class ZooManagement {
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Animal lion = new Animal();
+        lion.setName("Simba");
+        try {
+            lion.setAge(8);
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        }
+        lion.setFamily("Cats");
+        lion.setMammal(true);
 
-        // Création d'un zoo
-        Zoo myZoo = new Zoo("Paris Zoo", "Paris");
+        Zoo myZoo = new Zoo("Wildlife Park", "Ariana");
 
-        // Création d'animaux
-        Animal lion = new Animal("Felidae", "Lion", 5, true);
-        Animal tiger = new Animal("Felidae", "Tiger", 4, true);
-        Animal elephant = new Animal("Elephantidae", "Elephant", 10, true);
+        Dolphin d = new Dolphin();
+        d.setSwimmingSpeed(24.5f);
+        Dolphin d1 = new Dolphin();
+        d1.setSwimmingSpeed(21.8f);
+        myZoo.addAquaticAnimal(d);
+        myZoo.addAquaticAnimal(d1);
 
-        // Ajouter des animaux au zoo
-        myZoo.addAnimal(lion);
-        myZoo.addAnimal(tiger);
-        myZoo.addAnimal(elephant);
+        Penguin p = new Penguin();
+        p.setSwimmingDepth(24.6f);
+        myZoo.addAquaticAnimal(p);
 
-        // Création d'animaux aquatiques
-        Dolphin dolphin = new Dolphin("Flipper", 3, "Océan Atlantique");
-        Penguin penguin = new Penguin("Pingu", 2, "Antarctique");
+        Terrestrial tiger = new Terrestrial("Felidae", "Tiger", 5, true, 4);
+        tiger.eatMeat(Food.MEAT);  // Tiger eating meat
+        tiger.eatPlant(Food.PLANT);  // Tiger not eating plant
+        tiger.eatPlantAndMeat(Food.BOTH);  // Tiger eating both
 
-        // Ajouter des animaux aquatiques
-        myZoo.addAquaticAnimal(dolphin);
-        myZoo.addAquaticAnimal(penguin);
+        for (int i = 0; i < myZoo.getNbrAquatics(); i++) {
+            Aquatic[] aquatics = myZoo.getAquaticAnimals();
+            aquatics[i].swim();
+            aquatics[i].eatMeat(Food.MEAT);  // Example of eating meat
+        }
 
-        // Afficher les animaux aquatiques et leurs comportements
-        myZoo.displayAquaticAnimalsSwim();
-
-        // Afficher le nombre de dauphins et de pingouins
-        myZoo.displayNumberOfAquaticsByType();
-
-        // Afficher la profondeur maximale de nage des pingouins
-        System.out.println("Profondeur maximale de nage des pingouins : " + myZoo.maxPenguinSwimmingDepth() + " mètres");
-
-        scanner.close();
+        System.out.println(myZoo);
     }
 }
