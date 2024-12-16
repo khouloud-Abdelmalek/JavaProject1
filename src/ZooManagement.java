@@ -1,3 +1,8 @@
+package tn.esprit.gestionzoo.main;
+
+import tn.esprit.gestionzoo.entities.Zoo;
+import tn.esprit.gestionzoo.entities.Animal;
+
 import java.util.Scanner;
 
 public class ZooManagement {
@@ -41,7 +46,7 @@ public class ZooManagement {
         anotherZoo.addAnimal(new Animal("Felidae", "Jaguar", 6, true));
         Zoo largerZoo = Zoo.comparerZoo(myZoo, anotherZoo);
         if (largerZoo != null) {
-            System.out.println("Le zoo avec le plus d'animaux est: " + largerZoo.name);
+            System.out.println("Le zoo avec le plus d'animaux est: " + largerZoo.getName());
         } else {
             System.out.println("Les deux zoos ont le même nombre d'animaux.");
         }
