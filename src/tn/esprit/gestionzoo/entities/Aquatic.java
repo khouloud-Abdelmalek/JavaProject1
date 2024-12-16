@@ -67,14 +67,22 @@ public class Dolphin extends Aquatic {
 }
 
 
-public class Dolphin extends Aquatic {
-    public Dolphin(String name, int age, String habitat) {
+
+
+public class Penguin extends Aquatic {
+    public Penguin(String name, int age, String habitat) {
         super(name, age, habitat);
     }
 
     // Redéfinition de la méthode swim()
     @Override
     public void swim() {
-        System.out.println(getName() + " nage joyeusement dans l'océan.");
+        System.out.println(getName() + " nage dans l'eau froide.");
+    }
+
+    // Méthode pour la profondeur maximale de nage des pingouins
+    public float maxSwimmingDepth() {
+        return 500;  // Exemple de profondeur en mètres
     }
 }
+
